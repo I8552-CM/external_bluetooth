@@ -399,7 +399,7 @@ static int bcsp(int fd, struct uart_t *u, struct termios *ti)
 	}
 
 	ti->c_cflag |= PARENB;
-	ti->c_cflag &= ~(PARODD);
+	ti->c_cflag |= PARODD;
 
 	if (tcsetattr(fd, TCSANOW, ti) < 0) {
 		perror("Can't set port settings");
