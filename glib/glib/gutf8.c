@@ -404,14 +404,14 @@ get_alias_hash (void)
 {
   static GHashTable *alias_hash = NULL;
   const char *aliases;
-
+  const char *_g_locale_get_charset_aliases= NULL;
   G_LOCK (aliases);
 
   if (!alias_hash)
     {
       alias_hash = g_hash_table_new (g_str_hash, g_str_equal);
       
-      aliases = _g_locale_get_charset_aliases ();
+      aliases = _g_locale_get_charset_aliases;
       while (*aliases != '\0')
 	{
 	  const char *canonical;
